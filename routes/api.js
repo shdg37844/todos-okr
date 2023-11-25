@@ -8,6 +8,7 @@ var authController = require('./../controllers/auth.js');
 
 router.post('/todos', todoController.insert);
 router.delete('/todos/:todosId', todoController.delete);
+router.put('/todos/:todosId', todoController.update);
 
 router.post('/subtodos/:todosId', subTodoController.insert);
 router.delete('/subtodos/:subtodosId', subTodoController.delete);

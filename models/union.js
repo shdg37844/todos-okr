@@ -7,7 +7,7 @@ class Union extends Base {
     }
 
     async todosWithSubtodos() {
-        //// 这里的 todos 是一个数组，包含了从数据库中查询得到的所有待办事项
+        // 这里的 todos 是一个数组，包含了从数据库中查询得到的所有待办事项
         const todos = await this.all();
 
         //对每个待办事项查询其子待办事项

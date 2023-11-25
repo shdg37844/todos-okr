@@ -5,19 +5,6 @@ const UnionModel = require('./../models/union')
 const Union = new UnionModel();
 
 const todoController = {
-    // show: async function (req, res, next) {
-    //     try {
-    //         const todos = await Union.todosWithSubtodos();
-    //         res.locals.todos = todos;
-
-    //         //res.render('todos.tpl', res.locals); 
-    //         res.json({ code: 200, data: todos });
-    //     } catch (e) {
-    //         // res.locals.error = e;
-    //         // res.render('error', res.locals);
-    //         res.json({ code: 0, data: e })
-    //     }
-    // },
     show: async function (req, res, next) {
         try {
             const todos = await Union.todosWithSubtodos();
@@ -59,6 +46,19 @@ const todoController = {
 
         try {
             const todos = await Todo.delete(todosId);
+            res.json({ code: 200, data: todos })
+        } catch (e) {
+            res.json({ code: 0, data: e })
+        }
+    },
+    update: async function (req, res, next) {
+        let todosId = req.params.todosId;
+        let completed = Number(req.body.completed); // 转换为数字
+
+        //console.log(todosId,completed)
+
+        try {
+            const todos = await Todo.update(todosId, { completed });
             res.json({ code: 200, data: todos })
         } catch (e) {
             res.json({ code: 0, data: e })

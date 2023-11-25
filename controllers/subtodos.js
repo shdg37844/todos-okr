@@ -16,7 +16,7 @@ const subTodoController = {
         let subcontent = req.body.subcontent;
         let todosId = req.params.todosId
 
-       
+
         if (!subcontent) {
             res.json({ code: 0, data: 'params empty!' });
             return
@@ -41,7 +41,7 @@ const subTodoController = {
     },
     update: async function (req, res, next) {
         let subtodosId = req.params.subtodosId;
-        let completed = req.body.completed === true ? 1 : 0; // 转换为整数
+        let completed = Number(req.body.completed); // 转换为数字
 
         try {
             const subTodos = await subTodo.update(subtodosId, { completed });
